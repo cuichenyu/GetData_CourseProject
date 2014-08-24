@@ -1,5 +1,5 @@
 ## GetData_CourseProject
-The repository for the course project of getting and cleaning data on Coursera
+##### The repository for the course project of getting and cleaning data on Coursera
 =====================
 In order to make sure that my code works fine, please put the data folder "UCI HAR Dataset" into your working directory before running my code.
 
