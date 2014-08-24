@@ -2,7 +2,7 @@
 #Before starting to deal with the data, please put the data folder "UCI HAR Dataset"
 #into your working directory.
 
-#Read the train and test data
+#Read the training and testing data
 colnames <- read.table("UCI HAR Dataset/features.txt")
 x_train <- read.table("UCI HAR Dataset/train/X_train.txt",col.names = colnames[,2])
 y_train <- read.table("UCI HAR Dataset/train/y_train.txt",col.names = "activity")
@@ -12,7 +12,7 @@ subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt",col.names 
 subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt",col.names = "subject")
 activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt")
 
-#Merge the training and test sets
+#Merge the training and testing sets
 train_set <- cbind(x_train, y_train, subject_train)
 test_set <- cbind(x_test, y_test, subject_test)
 total_set <- rbind(train_set, test_set)
@@ -39,4 +39,6 @@ names(total_set) <- gsub("\\.","-",names(total_set))
 final_set <- aggregate(total_set[,1:66], list(total_set$activity, total_set$subject), mean)
 names(final_set) <- gsub("Group.1","Activity",names(final_set))
 names(final_set) <- gsub("Group.2","Subject",names(final_set))
+
+#Output the tidy data set
 write.table(final_set, "final_data_set.txt", row.names = FALSE, sep = "\t")
